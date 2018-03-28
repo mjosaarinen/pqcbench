@@ -1,30 +1,29 @@
 
-https://github.com/mjosaarinen/pqcbench
+Make sure you have basic packages required. As a superuser:
 
-# Make sure you have basic packages required. As a superuser:
-
+```
 apt install git gcc make xsltproc openssl libssl-dev
+```
  
-# Now as a normal user we may clone pqcbench and install its particular
-# requirements locally
+Now as a normal user we may clone pqcbench and install its particular
+requirements locally
 
+```
 git clone https://github.com/mjosaarinen/pqcbench.git
 cd pqcbench
+```
 
-# Clone and build libkeccak
+Clone and build libkeccak
 
-apt install libssl-dev linbtl-dev libgmp-dev
-
-# Install libkeccak
-
-cdg
+```
 cd KeccakCodePackage/
 make generic64/libkeccak.a
 cd ..
+```
 
-# Some candidates require the latest 1.1.0 series OpenSSL. 
-# We will download and install it locally
+Some candidates require the latest 1.1.0 series OpenSSL.  We will download and install it locally
 
+```
 wget https://www.openssl.org/source/openssl-1.1.0g.tar.gz
 tar xfvz openssl-1.1.0g.tar.gz 
 cd openssl-1.1.0g
@@ -35,4 +34,4 @@ rm -rf ../include/openssl
 mv include/openssl ../include
 cd ..
 rm -rf openssl-*
-
+```
