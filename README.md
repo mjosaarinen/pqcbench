@@ -14,7 +14,7 @@ bigger variants of Post-Quantum RSA), or just because I have not been able
 to make them run yet. There are problems especially with candidates that use 
 the NTL library.
 
-Performance testing is useful an useful feature, but not the primary function 
+Performance testing is a useful feature, but not the primary function 
 of this testing suite. The idea is to enable researchers to perform automated testing of other properties across *all* candidates with reasonable ease.
 Properties such as time variance, statistical properties of ciphertext,
 decryption failure rate, and non-malleability of ciphertext are of particular
