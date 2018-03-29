@@ -30,7 +30,7 @@ lurk there for a while.
 
 Make sure you have preliminaries installed. As a superuser:
 ```
-apt install git gcc make xsltproc openssl libssl-dev libgmp-devs
+apt install git gcc make xsltproc openssl libssl-dev libgmp-dev
 ```
  
 Now as a normal user we may clone pqcbench and install its particular
