@@ -98,14 +98,14 @@ timing in seconds. *KEX Total* is simply the sum of time taken by *KEM KeyGen* (
        0.001336305 s   KEX Total   [AKCN-SEC]
        0.000421219 s   KEM KeyGen  [AKCN-SEC]
 ```
-You are expected to use standard UNIX text manipulation tools to manipulate
-the report file. To get a sorted list of total KEX times, for example, you
-can do something like:
+You are expected to use standard UNIX text tools to extract the information
+you want from report file. To get a sorted list of total KEX times, for 
+example, you can do something like:
 ```
 $ cd reports
 $ grep "KEX Total" mysystem-kem.txt | sort -n > mysystem-kex.txt
 ```
-This will generate a list of algorithms sorted by Total Key Exchangee time.
+This will generate a list of algorithms sorted by Total Key Exchange time.
 The output will look something like like:
 ```
        0.000302187 s   KEX Total   [BabyBearEphem]
@@ -120,3 +120,4 @@ The output will look something like like:
       19.538673317 s   KEX Total   [DAGS_3]
      145.986861373 s   KEX Total   [DAGS_5]
 ```
+
