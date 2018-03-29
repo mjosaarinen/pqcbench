@@ -102,8 +102,8 @@ You are expected to use standard UNIX text tools to extract the information
 you want from report file. To get a sorted list of total KEX times, for 
 example, you can do something like:
 ```
-$ cd reports
-$ grep "KEX Total" mysystem-kem.txt | sort -n > mysystem-kex.txt
+cd reports
+grep "KEX Total" mysystem-kem.txt | sort -n > mysystem-kex.txt
 ```
 This will generate a list of algorithms sorted by Total Key Exchange time.
 The output will look something like like:
