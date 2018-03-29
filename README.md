@@ -1,6 +1,6 @@
 # pqcbench
 
-Initial release, 2018-03-29, Markku-Juhani O. Saarinen, <mjos@iki.fi>
+2018-03-29 Markku-Juhani O. Saarinen, <mjos@iki.fi>
 
 **pqcbench** is a tool for testing properties of the candidates in
 [NIST Post-Quantum Cryptography Standardization Effort](https://csrc.nist.gov/Projects/Post-Quantum-Cryptography/Round-1-Submissions). 
