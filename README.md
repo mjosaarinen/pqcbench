@@ -35,7 +35,7 @@ have to compile more libraries from scratch.
 
 Make sure you have the prerequisite tools and libraries installed:
 ```
-sudo apt install git gcc make xsltproc libssl-dev libgmp-dev
+sudo apt install git gcc make xsltproc libssl-dev libgmp-dev libntl-dev
 ```
  
 Fetch (clone) pqcbench itself:
