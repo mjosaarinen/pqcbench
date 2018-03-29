@@ -15,11 +15,11 @@ to make them run yet. There are problems especially with candidates that use
 the NTL library.
 
 Performance testing is a useful feature, but not the primary function 
-of this testing suite. The idea is to enable researchers to perform automated testing of other properties across *all* candidates with reasonable ease.
+of this testing suite. The idea is to enable researchers to perform automated testing of algorithm properties across *all* candidates with reasonable ease.
 Properties such as time variance, statistical properties of ciphertext,
 decryption failure rate, and non-malleability of ciphertext are of particular
-interest. Currently provided scripts just benchmark the candidates, but this 
-is easily modifiable.
+interest. Currently provided scripts just time the candidates, but this 
+is easily extensible at a single point (`src/kem_test.c`).
 
 I did similar work on the CAESAR AEAD candidates, published in 
 [The BRUTUS Automatic Cryptanalytic Framework](http://dx.doi.org/10.1007/s13389-015-0114-1) (J. Cryptographic Engineering, Vol. 6, No. 1, pp 75-82. Springer 2016.)
