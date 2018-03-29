@@ -31,7 +31,7 @@ cd openssl-1.1.0g
 make
 mv libcrypto.a ..
 rm -rf ../include/openssl
-mv include/openssl ../include
+mv include ..
 cd ..
 rm -rf openssl-*
 ```
