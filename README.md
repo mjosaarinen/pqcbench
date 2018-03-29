@@ -15,14 +15,16 @@ because I have not been able to make them run without decryption errors yet.
 There are problems especially with candidates that use the NTL library.
 
 Performance testing is a useful feature, but not the primary function 
-of this testing suite. The idea is to enable researchers to perform automated testing of algorithm properties across *all* candidates with reasonable ease.
+of this testing suite. The idea is to enable researchers to perform automated 
+testing of algorithm properties across *all* candidates with reasonable ease.
 Properties such as time variance, statistical properties of ciphertext,
 decryption failure rate, and non-malleability of ciphertext are of particular
 interest. Currently provided scripts just time the candidates, but this 
 is easily extensible at a single point (`src/kem_test.c`).
 
 I did similar work on the CAESAR AEAD candidates, published as 
-[The BRUTUS Automatic Cryptanalytic Framework](http://dx.doi.org/10.1007/s13389-015-0114-1) (J. Cryptographic Engineering, Vol. 6, No. 1, pp 75-82. Springer 2016.)
+[The BRUTUS Automatic Cryptanalytic Framework](http://dx.doi.org/10.1007/s13389-015-0114-1) 
+(J. Cryptographic Engineering, Vol. 6, No. 1, pp 75-82. Springer 2016.)
 
 Optimized C implementation was used, when available. Some of the implementation
 source code has been heavily hacked to fit the pqcbench mold, and bugs will 
@@ -31,7 +33,7 @@ lurk there for a while.
 
 ## Compiling
 
-These instructions are for Debian / Ubuntu - favoured Linux systems. Hacking
+These instructions are for Debian / Ubuntu - flavoured Linux systems. Hacking
 the system to work on, say, Mac OS should not be too difficult, but you may
 have to compile more libraries from scratch.
 
