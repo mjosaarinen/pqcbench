@@ -74,12 +74,14 @@ You may copy and modify to script to fit your needs -- to change compiler
 options etc.
 
 With the default timeout options the script will currently run for about half
-an hour while it covers 112 variants:
+an hour while it covers more than a hundred variants listed in 
+`testable_kem.lst` (included):
 ```
 ./test_kems.sh testable_kem.lst reports/mysystem-kem.txt
 ```
 The script generates running output to `/dev/tty` in addition to the report 
-file, so redirecting the output of the script is pointless.
+file at `reports/mysystem-kem.txt`, so redirecting the output of the script 
+is pointless.
 
 The output format is fairly simple. The first column always gives a numeric
 timing in seconds. *KEX Total* is simply the sum of time taken by *KEM KeyGen* (Key Generation), *KEM Encaps* (Encapsulation), and *KEM Decaps* 
