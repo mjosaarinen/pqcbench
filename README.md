@@ -10,7 +10,9 @@ different KEMs. It is my intention to expand the coverage to Public Key
 Encryption and Signature algorithms soon. 
 
 Some variants are left out just because they take too long to run (notably 
-Post-Quantum RSA), or just because I have not been able to make them run yet.
+bigger variants of Post-Quantum RSA), or just because I have not been able 
+to make them run yet. There are problems especially with candidates that use 
+the NTL library.
 
 Performance testing is useful an useful feature, but not the primary function 
 of this testing suite. The idea is to enable researchers to perform automated testing of other properties across *all* candidates with reasonable ease.
@@ -29,7 +31,7 @@ lurk there for a while.
 
 ## Compiling
 
-These instructions are for Debian / Ubuntu - flavored Linux systems. Hackinh
+These instructions are for Debian / Ubuntu - favoured Linux systems. Hacking
 the system to work on, say, Mac OS should not be too difficult, but you may
 have to compile more libraries from scratch.
 

@@ -9,7 +9,6 @@ round1/kem/CFPKM128
 round1/kem/CFPKM182
 round1/kem/dags3
 round1/kem/dags5
-round1/kem/Ding_LWE_Key_Exchange
 round1/kem/DME
 round1/kem/fire_saber
 round1/kem/FrodoKEM-640
