@@ -26,15 +26,18 @@ source code has been heavily hacked to fit the pqcbench mold, and bugs will
 lurk there for a while. 
 
 
-## Installation (For Debian/Ubuntu Systems)
+## Compiling
 
-Make sure you have preliminaries installed. As a superuser:
+These instructions are for Debian / Ubuntu - flavored Linux systems. Hackinh
+the system to work on, say, Mac OS should not be too difficult, but you may
+have to compile more libraries from scratch.
+
+Make sure you have the prerequisite tools and libraries installed:
 ```
-apt install git gcc make xsltproc openssl libssl-dev libgmp-dev
+sudo apt install git gcc make xsltproc libssl-dev libgmp-dev
 ```
  
-Now as a normal user we may clone pqcbench and install its particular
-requirements locally
+Fetch (clone) pqcbench itself:
 
 ```
 git clone https://github.com/mjosaarinen/pqcbench.git
@@ -49,12 +52,13 @@ make generic64/libkeccak.a
 cd ..
 ```
 Some candidates require 1.1 series of OpenSSL libcrypto.
-If you are using an Ubuntu older than the 18.04 release, you
-will have to download and install it locally:
+We will download and install it locally since it is not widely
+available in packaged form before the Ubuntu 18.04 release.
+This will take a while.
 ```
-wget https://www.openssl.org/source/openssl-1.1.0g.tar.gz
-tar xfvz openssl-1.1.0g.tar.gz 
-cd openssl-1.1.0g
+wget https://www.openssl.org/source/openssl-1.1.0h.tar.gz
+tar xfvz openssl-1.1.0h.tar.gz 
+cd openssl-1.1.0h
 ./config -static
 make
 mv libcrypto.a ..
@@ -75,16 +79,17 @@ options etc.
 
 With the default timeout options the script will currently run for about half
 an hour while it covers more than a hundred variants listed in 
-`testable_kem.lst` (included):
+`testable_kem.lst` (provided):
 ```
 ./test_kems.sh testable_kem.lst reports/mysystem-kem.txt
 ```
 The script generates running output to `/dev/tty` in addition to the report 
 file at `reports/mysystem-kem.txt`, so redirecting the output of the script 
-is pointless.
+is pointless. 
 
 The output format is fairly simple. The first column always gives a numeric
-timing in seconds. *KEX Total* is simply the sum of time taken by *KEM KeyGen* (Key Generation), *KEM Encaps* (Encapsulation), and *KEM Decaps* 
+timing in seconds. *KEX Total* is simply the sum of time taken by *KEM KeyGen* 
+(Key Generation), *KEM Encaps* (Encapsulation), and *KEM Decaps* 
 (Decapsulation).
 ```
        0.000805357 s   KEX Total   [AKCN-MLWE]
@@ -97,6 +102,7 @@ timing in seconds. *KEX Total* is simply the sum of time taken by *KEM KeyGen* (
        0.000091833 s   KEM Decaps  [AKCN-MLWE]
        0.001336305 s   KEX Total   [AKCN-SEC]
        0.000421219 s   KEM KeyGen  [AKCN-SEC]
+       [...]
 ```
 You are expected to use standard UNIX text tools to extract the information
 you want from report file. To get a sorted list of total KEX times, for 
