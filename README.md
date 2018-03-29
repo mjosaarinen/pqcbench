@@ -5,14 +5,14 @@
 **pqcbench** is a tool for testing properties of the candidates in
 [NIST Post-Quantum Cryptography Standardization Effort](https://csrc.nist.gov/Projects/Post-Quantum-Cryptography/Round-1-Submissions). 
 
-This initial release covers 112 variants of 34 (depending on how you count)
-different KEMs. It is my intention to expand the coverage to Public Key
+This initial release covers more than 100 variants of 32+ (depending on how you
+count) different KEMs. It is my intention to expand the coverage to Public Key
 Encryption and Signature algorithms soon. 
 
-Some variants are left out just because they take too long to run (notably 
-bigger variants of Post-Quantum RSA), or just because I have not been able 
-to make them run yet. There are problems especially with candidates that use 
-the NTL library.
+Some variants are currently left out from the test suite just because they 
+take too long to run (notably bigger variants of Post-Quantum RSA), or just 
+because I have not been able to make them run without decryption errors yet. 
+There are problems especially with candidates that use the NTL library.
 
 Performance testing is a useful feature, but not the primary function 
 of this testing suite. The idea is to enable researchers to perform automated testing of algorithm properties across *all* candidates with reasonable ease.
