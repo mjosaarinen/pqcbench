@@ -1,0 +1,32 @@
+ 
+first go to ref folder
+
+  for example:   $ cd ref 
+
+ 
+if you want to compile and run KAT generation files , run following script:
+
+   $  make PQCgenKAT_kem
+   $  ./PQCgenKAT_kem
+
+if you want to compile and run our KAT input and output tuples generation files , run following script:
+
+   $  make akcn-mlwe-KATgen
+   $  ./akcn-mlwe-KATgen
+
+if you want to compile and run our intermediate value generation files , run following script:
+
+   $  make akcn-mlwe-intermediate-gen
+   $  ./akcn-mlwe-intermediate-gen
+
+
+Then if you want to compile and run our implementation, run following script:
+
+   $  make akcn-mlwe
+   $  ./akcn-mlwe
+
+if you want to compile and run speed test files , run following script:
+
+
+   $  make speed
+   $  ./speed

@@ -1,0 +1,55 @@
+kem.c: In function ‘crypto_kem_enc_KAT’:
+kem.c:138:31: warning: passing argument 2 of ‘Get_small_poly’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   Get_small_poly(&small_poly, small_poly_seed, nonce++); // small_poly=X2
+                               ^~~~~~~~~~~~~~~
+In file included from io.h:5:0,
+                 from kem.c:7:
+polynomial.h:13:6: note: expected ‘unsigned char *’ but argument is of type ‘const unsigned char *’
+ void Get_small_poly(Polynomial * ptr, unsigned char * seed, unsigned int nonce);
+      ^~~~~~~~~~~~~~
+kem.c:142:31: warning: passing argument 2 of ‘Get_small_poly’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   Get_small_poly(&small_poly, small_poly_seed, nonce++); // small_poly=E2
+                               ^~~~~~~~~~~~~~~
+In file included from io.h:5:0,
+                 from kem.c:7:
+polynomial.h:13:6: note: expected ‘unsigned char *’ but argument is of type ‘const unsigned char *’
+ void Get_small_poly(Polynomial * ptr, unsigned char * seed, unsigned int nonce);
+      ^~~~~~~~~~~~~~
+kem.c:145:31: warning: passing argument 2 of ‘Get_small_poly’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   Get_small_poly(&small_poly, small_poly_seed, nonce++); // small_poly=E2'
+                               ^~~~~~~~~~~~~~~
+In file included from io.h:5:0,
+                 from kem.c:7:
+polynomial.h:13:6: note: expected ‘unsigned char *’ but argument is of type ‘const unsigned char *’
+ void Get_small_poly(Polynomial * ptr, unsigned char * seed, unsigned int nonce);
+      ^~~~~~~~~~~~~~
+kem.c:157:33: warning: passing argument 2 of ‘seedexpander_init’ from incompatible pointer type [-Wincompatible-pointer-types]
+   seedexpander_init(&aes_state, &local_seed, diversifier, SEC_BLOCK_NUMBER*4);  
+                                 ^
+In file included from kem.c:10:0:
+../../nist/rng.h:39:1: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char (*)[32]’
+ seedexpander_init(AES_XOF_struct *ctx,
+ ^~~~~~~~~~~~~~~~~
+kem.c:157:46: warning: passing argument 3 of ‘seedexpander_init’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   seedexpander_init(&aes_state, &local_seed, diversifier, SEC_BLOCK_NUMBER*4);  
+                                              ^~~~~~~~~~~
+In file included from kem.c:10:0:
+../../nist/rng.h:39:1: note: expected ‘unsigned char *’ but argument is of type ‘const unsigned char *’
+ seedexpander_init(AES_XOF_struct *ctx,
+ ^~~~~~~~~~~~~~~~~
+polynomial.c: In function ‘Get_uniform_poly’:
+polynomial.c:229:44: warning: passing argument 3 of ‘seedexpander_init’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  seedexpander_init(&aes_state, local_seed, diversifier, 2048);
+                                            ^~~~~~~~~~~
+In file included from polynomial.c:6:0:
+../../nist/rng.h:39:1: note: expected ‘unsigned char *’ but argument is of type ‘const unsigned char *’
+ seedexpander_init(AES_XOF_struct *ctx,
+ ^~~~~~~~~~~~~~~~~
+polynomial.c: In function ‘Get_small_poly’:
+polynomial.c:263:44: warning: passing argument 3 of ‘seedexpander_init’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  seedexpander_init(&aes_state, local_seed, diversifier,  3072);
+                                            ^~~~~~~~~~~
+In file included from polynomial.c:6:0:
+../../nist/rng.h:39:1: note: expected ‘unsigned char *’ but argument is of type ‘const unsigned char *’
+ seedexpander_init(AES_XOF_struct *ctx,
+ ^~~~~~~~~~~~~~~~~
