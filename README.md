@@ -1,14 +1,14 @@
 # pqcbench
 
 **pqcbench** is a tool for testing properties of the candidates in
-[NIST Post-Quantum Cryptography StandardizationEffort](https://csrc.nist.gov/Projects/Post-Quantum-Cryptography/Round-1-Submissions). 
+[NIST Post-Quantum Cryptography Standardization Effort](https://csrc.nist.gov/Projects/Post-Quantum-Cryptography/Round-1-Submissions). 
 
 This initial release covers 112 variants of 34 (depending on how you count)
 different KEMs. It is my intention to expand the coverage to Public Key
 Encryption and Signature algorithms soon. 
 
 Performance testing is useful an useful feature, but not the primary function 
-of this testing suite. The idea is to enable researchers to perform automated testing of other properties accross *all* candidates with reasonable ease.
+of this testing suite. The idea is to enable researchers to perform automated testing of other properties across *all* candidates with reasonable ease.
 Properties such as time variance, statistical properties of ciphertext,
 decryption failure rate, and non-malleability of ciphertext are of particular
 interest. The current version tests just running time.
@@ -16,11 +16,12 @@ interest. The current version tests just running time.
 I did similar work on the CAESAR AEAD candidates, published in 
 [The BRUTUS Automatic Cryptanalytic Framework](http://dx.doi.org/10.1007/s13389-015-0114-1) (J. Cryptographic Engineering, Vol. 6, No. 1, pp 75-82. Springer 2016.)
 
-Optimized C implementation is used, when available. Some of the implementation
+Optimized C implementation was used, when available. Some of the implementation
 source code has been heavily hacked to fit the pqcbench mold, and bugs will 
 lurk there for a while. 
 
 **Cheers,**
+
 -Markku 
 
 ## Installation
