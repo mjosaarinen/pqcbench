@@ -7,13 +7,15 @@
 
 This initial release covers 112 variants of 34 (depending on how you count)
 different KEMs. It is my intention to expand the coverage to Public Key
-Encryption and Signature algorithms soon. 
+Encryption and Signature algorithms soon. Some variants are left out just
+because they take too long to run (notably Post-Quantum RSA).
 
 Performance testing is useful an useful feature, but not the primary function 
 of this testing suite. The idea is to enable researchers to perform automated testing of other properties across *all* candidates with reasonable ease.
 Properties such as time variance, statistical properties of ciphertext,
 decryption failure rate, and non-malleability of ciphertext are of particular
-interest. The current version tests just running time.
+interest. Currently provided scripts just benchmark the candidates, but this 
+is easily modifiable.
 
 I did similar work on the CAESAR AEAD candidates, published in 
 [The BRUTUS Automatic Cryptanalytic Framework](http://dx.doi.org/10.1007/s13389-015-0114-1) (J. Cryptographic Engineering, Vol. 6, No. 1, pp 75-82. Springer 2016.)
@@ -92,7 +94,7 @@ timing in seconds. *KEX Total* is simply the sum of time taken by *KEM KeyGen* (
        0.000091833 s   KEM Decaps  [AKCN-MLWE]
        0.001336305 s   KEX Total   [AKCN-SEC]
        0.000421219 s   KEM KeyGen  [AKCN-SEC]
-``
+```
 You are expected to use standard UNIX text manipulation tools to manipulate
 the report file. To get a sorted list of total KEX times, for example, you
 can do something like:
@@ -101,4 +103,17 @@ $ cd reports
 $ grep "KEX Total" mysystem-kem.txt | sort -n > mysystem-kex.txt
 ```
 This will generate a list of algorithms sorted by Total Key Exchangee time.
-
+The output will look something like like:
+```
+       0.000302187 s   KEX Total   [BabyBearEphem]
+       0.000307943 s   KEX Total   [NewHope512-CPAKEM]
+       0.000454817 s   KEX Total   [BabyBear]
+       0.000515070 s   KEX Total   [NewHope512-CCAKEM]
+       0.000516640 s   KEX Total   [MamaBearEphem]
+[..]
+       8.925089051 s   KEX Total   [BIG_QUAKE_3]
+      14.155901973 s   KEX Total   [Classic McEliece 6960119]
+      16.505762053 s   KEX Total   [BIG_QUAKE]
+      19.538673317 s   KEX Total   [DAGS_3]
+     145.986861373 s   KEX Total   [DAGS_5]
+```
