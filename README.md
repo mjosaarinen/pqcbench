@@ -50,7 +50,7 @@ cd ..
 ```
 Some candidates require 1.1 series of OpenSSL libcrypto.
 If you are using an Ubuntu older than the 18.04 release, you
-will gave to download and install it locally:
+will have to download and install it locally:
 ```
 wget https://www.openssl.org/source/openssl-1.1.0g.tar.gz
 tar xfvz openssl-1.1.0g.tar.gz 
