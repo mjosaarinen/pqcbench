@@ -1,5 +1,7 @@
 # pqcbench
 
+Initial release, 2018-03-29, Markku-Juhani O. Saarinen, <mjos@iki.fi>
+
 **pqcbench** is a tool for testing properties of the candidates in
 [NIST Post-Quantum Cryptography Standardization Effort](https://csrc.nist.gov/Projects/Post-Quantum-Cryptography/Round-1-Submissions). 
 
@@ -20,15 +22,12 @@ Optimized C implementation was used, when available. Some of the implementation
 source code has been heavily hacked to fit the pqcbench mold, and bugs will 
 lurk there for a while. 
 
-**Cheers,**
 
--Markku 
+## Installation (For Debian/Ubuntu Systems)
 
-## Installation
-
-Make sure you have basic packages required. As a superuser:
+Make sure you have preliminaries installed. As a superuser:
 ```
-apt install git gcc make xsltproc openssl libssl-dev
+apt install git gcc make xsltproc openssl libssl-dev libgmp-devs
 ```
  
 Now as a normal user we may clone pqcbench and install its particular
