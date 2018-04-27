@@ -56,22 +56,8 @@ cd KeccakCodePackage
 make generic64/libkeccak.a
 cd ..
 ```
-Some candidates require 1.1 series of OpenSSL libcrypto.
-We will download and install it locally since it is not widely
-available in packaged form before the Ubuntu 18.04 release.
-This will take a while.
-```
-wget https://www.openssl.org/source/openssl-1.1.0h.tar.gz
-tar xfvz openssl-1.1.0h.tar.gz 
-cd openssl-1.1.0h
-./config -static
-make
-mv libcrypto.a ..
-rm -rf ../include/openssl
-mv include ..
-cd ..
-rm -rf openssl-*
-```
+Some candidates require 1.1 series of OpenSSL libcrypto (notably Lotus).
+This is the default with Ubuntu 18.04 but not earlier. 
 
 ## Running basic benchmarks
 
