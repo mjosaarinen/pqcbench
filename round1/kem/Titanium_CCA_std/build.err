@@ -1,4 +1,0 @@
-pack.c: In function ‘poly_decode’:
-pack.c:63:6: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
-   bb = b + (i / 8) * Q_BITS;
-      ^
