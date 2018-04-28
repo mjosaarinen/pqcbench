@@ -1,0 +1,4 @@
+rlce.c: In function ‘rlceReadFile’:
+rlce.c:1390:3: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+   fread(buffer, 1,blen[0],f);
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~

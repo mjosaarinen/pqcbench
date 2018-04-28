@@ -1,0 +1,5 @@
+ntt.c: In function ‘extendedEuclid’:
+cc1: warning: function may return address of local variable [-Wreturn-local-addr]
+ntt.c:145:13: note: declared here
+     int64_t array[3];
+             ^~~~~
