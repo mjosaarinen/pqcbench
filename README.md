@@ -45,17 +45,18 @@ sudo apt install git gcc make xsltproc libssl-dev libgmp-dev libntl-dev
 Fetch (clone) pqcbench itself:
 
 ```
-git clone https://github.com/mjosaarinen/pqcbench.git
+git clone --recursive https://github.com/mjosaarinen/pqcbench
 cd pqcbench
 ```
-
-Fetch and build latest libkeccak:
+Note the `--recursive`, which will also fetch the libkeccak submodule from 
+`https://github.com/gvanas/KeccakCodePackage.git`.
+Build latest libkeccak:
 ```
-git clone https://github.com/gvanas/KeccakCodePackage.git
 cd KeccakCodePackage
 make generic64/libkeccak.a
 cd ..
 ```
+
 Some candidates require 1.1 series of OpenSSL libcrypto (notably Lotus).
 This is the default with Ubuntu 18.04 but not earlier. 
 
