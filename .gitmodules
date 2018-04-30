@@ -1,0 +1,3 @@
+[submodule "KeccakCodePackage"]
+	path = KeccakCodePackage
+	url = https://github.com/gvanas/KeccakCodePackage.git
