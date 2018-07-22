@@ -19,7 +19,7 @@
 #endif
 
 #ifndef XBENCH_TIMEOUT
-#define XBENCH_TIMEOUT 5000000000
+#define XBENCH_TIMEOUT 1000000000
 #endif
 
 #ifndef CRYPTO_ALGNAME
@@ -57,6 +57,15 @@ int main(int argc, char **argv)
 #define XBENCH_REPS 1
     uint8_t *pk[1], *sk[1], *ct[1], *ss[2];
 #endif
+
+    printf("CRYPTO_PUBLICKEYBYTES\t%8d\t\t[%s]\n", 
+            CRYPTO_PUBLICKEYBYTES, CRYPTO_ALGNAME);
+    printf("CRYPTO_SECRETKEYBYTES\t%8d\t\t[%s]\n", 
+            CRYPTO_SECRETKEYBYTES, CRYPTO_ALGNAME);
+    printf("CRYPTO_CIPHERTEXTBYTES\t%8d\t\t[%s]\n", 
+            CRYPTO_CIPHERTEXTBYTES, CRYPTO_ALGNAME);
+    printf("CRYPTO_BYTES\t\t%8d\t\t[%s]\n", 
+            CRYPTO_BYTES, CRYPTO_ALGNAME);
 
     // init random with random
 
@@ -102,11 +111,11 @@ int main(int argc, char **argv)
     tim = (clk_now() - tim) / ((double) n);
     clk2 /= n;
 
-    printf("%12lu clk  %12.8f s  KEX Total   [%s]\n",
+    printf("KEX Total   %12lu clk  %12.8f sec\t[%s]\n",
              clk2, tim, CRYPTO_ALGNAME);
 
     if (fails > 0)
-        printf("KEM test failed %d/%d times [%s]\n", 
+        printf("KEM test failed %d/%d time\t[%s]\n", 
             (int) fails, (int) n, CRYPTO_ALGNAME);
 
     // time keygen
@@ -124,7 +133,7 @@ int main(int argc, char **argv)
     tim = (clk_now() - tim) / ((double) n);
     clk2 /= n;
 
-    printf("%12lu clk  %12.8f s  KEM KeyGen  [%s]\n", 
+    printf("KEM KeyGen  %12lu clk  %12.8f sec\t[%s]\n", 
         clk2, tim , CRYPTO_ALGNAME);
 
 
@@ -143,7 +152,7 @@ int main(int argc, char **argv)
     tim = (clk_now() - tim) / ((double) n);
     clk2 /= n;
 
-    printf("%12lu clk  %12.8f s  KEM Encaps  [%s]\n", 
+    printf("KEM Encaps  %12lu clk  %12.8f sec\t[%s]\n", 
         clk2, tim, CRYPTO_ALGNAME);
 
     // time Decaps
@@ -161,7 +170,7 @@ int main(int argc, char **argv)
     tim = (clk_now() - tim) / ((double) n);
     clk2 /= n;
 
-    printf("%12lu clk  %12.8f s  KEM Decaps  [%s]\n", 
+    printf("KEM Decaps  %12lu clk  %12.8f sec\t[%s]\n", 
         clk2, tim, CRYPTO_ALGNAME);
 
     // free it
