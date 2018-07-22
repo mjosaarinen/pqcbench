@@ -84,7 +84,8 @@ you want from report file. To get a sorted list of total KEX times, for
 example, you can do something like:
 ```
 cd reports
-grep "KEX Total" mysystem-kem.txt | sort -n > mysystem-kex.txt
+grep "KEX Total" mysystem-kem.txt | sort -n -k 3  > mysystem-sorted.txt
 ```
-This will generate a list of algorithms sorted by Total Key Exchange time.
+This will generate a list of algorithms sorted by Total Key Exchange clock
+cycles (third word on each line).
 
