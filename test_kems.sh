@@ -19,7 +19,7 @@ do
 	cd $x
 	rm -f $XKEM_BIN build.err
 	./build_test.sh 2> build.err
-	$XKEM_BIN | tee /dev/tty >> $base_dir/$2
+	$XKEM_BIN | tee -a $base_dir/$2
 	rm -f $XKEM_BIN
 	cd $base_dir
 done
