@@ -7,20 +7,25 @@
 #include <time.h>
 #include <stdlib.h>
 
+// for __rdtsc()
+#include <x86intrin.h>
+
 #include "api.h"
 #include "rng.h"
+
 
 #ifndef XBENCH_REPS
 #define XBENCH_REPS 20
 #endif
 
 #ifndef XBENCH_TIMEOUT
-#define XBENCH_TIMEOUT 3
+#define XBENCH_TIMEOUT 5000000000
 #endif
 
 #ifndef CRYPTO_ALGNAME
 #define CRYPTO_ALGNAME "UNKNOWN ALGORITHM"
 #endif
+
 
 // Gives roughly 2 microsecond precision on my system
 
@@ -41,8 +46,9 @@ int main(int argc, char **argv)
 {
     FILE *fd;
     uint8_t seed[48];
-    int i, n, fails;
-    double clk1, clk2;
+    int i, fails;
+    uint64_t clk1, clk2, n;
+    double tim;
 
 #if (XBENCH_REPS > 1)
     uint8_t *pk[XBENCH_REPS], *sk[XBENCH_REPS],
@@ -81,9 +87,8 @@ int main(int argc, char **argv)
 
     fails = 0;
     n = 0;
-
-    n = 0;
-    clk1 = clk_now();
+    tim = clk_now();
+    clk1 = __rdtsc();
     do {
         crypto_kem_keypair(pk[0], sk[0]);
         crypto_kem_enc(ct[0], ss[0], pk[0]);
@@ -92,61 +97,72 @@ int main(int argc, char **argv)
         if (memcmp(ss[0], ss[1], CRYPTO_BYTES) != 0)
             fails++;
         n++;
-        clk2 = clk_now() - clk1;
+        clk2 = __rdtsc() - clk1;
     } while (clk2 < XBENCH_TIMEOUT);
+    tim = (clk_now() - tim) / ((double) n);
+    clk2 /= n;
 
-    printf("%18.9f s   KEX Total   [%s]\n",
-        ((double) clk2) / ((double) n), CRYPTO_ALGNAME);
+    printf("%12lu clk  %12.8f s  KEX Total   [%s]\n",
+             clk2, tim, CRYPTO_ALGNAME);
 
     if (fails > 0)
-        printf("KEM test failed %d/%d times [%s]\n",
-            fails, n, CRYPTO_ALGNAME);
+        printf("KEM test failed %d/%d times [%s]\n", 
+            (int) fails, (int) n, CRYPTO_ALGNAME);
 
     // time keygen
 
     n = 0;
-    clk1 = clk_now();
+    tim = clk_now();
+    clk1 = __rdtsc();
     do {
         for (i = 0; i < XBENCH_REPS; i++) {
             crypto_kem_keypair(pk[i], sk[i]);
         }
-        clk2 = clk_now() - clk1;
+        clk2 = __rdtsc() - clk1;
         n += XBENCH_REPS;
     } while (clk2 < XBENCH_TIMEOUT);
+    tim = (clk_now() - tim) / ((double) n);
+    clk2 /= n;
 
-    printf("%18.9f s   KEM KeyGen  [%s]\n",
-        ((double) clk2) / ((double) n), CRYPTO_ALGNAME);
+    printf("%12lu clk  %12.8f s  KEM KeyGen  [%s]\n", 
+        clk2, tim , CRYPTO_ALGNAME);
 
 
     // time Encaps
 
     n = 0;
-    clk1 = clk_now();
+    tim = clk_now();
+    clk1 = __rdtsc();
     do {
         for (i = 0; i < XBENCH_REPS; i++) {
             crypto_kem_enc(ct[i], ss[i], pk[i]);
         }
-        clk2 = clk_now() - clk1;
+        clk2 = __rdtsc() - clk1;
         n += XBENCH_REPS;
     } while (clk2 < XBENCH_TIMEOUT);
+    tim = (clk_now() - tim) / ((double) n);
+    clk2 /= n;
 
-    printf("%18.9f s   KEM Encaps  [%s]\n",
-        ((double) clk2) / ((double) n), CRYPTO_ALGNAME);
+    printf("%12lu clk  %12.8f s  KEM Encaps  [%s]\n", 
+        clk2, tim, CRYPTO_ALGNAME);
 
     // time Decaps
 
     n = 0;
-    clk1 = clk_now();
+    tim = clk_now();
+    clk1 = __rdtsc();
     do {
         for (i = 0; i < XBENCH_REPS; i++) {
             crypto_kem_dec(ss[i], ct[i], sk[i]);
         }
-        clk2 = clk_now() - clk1;
+        clk2 = __rdtsc() - clk1;
         n += XBENCH_REPS;
     } while (clk2 < XBENCH_TIMEOUT);
+    tim = (clk_now() - tim) / ((double) n);
+    clk2 /= n;
 
-    printf("%18.9f s   KEM Decaps  [%s]\n",
-        ((double) clk2) / ((double) n), CRYPTO_ALGNAME);
+    printf("%12lu clk  %12.8f s  KEM Decaps  [%s]\n", 
+        clk2, tim, CRYPTO_ALGNAME);
 
     // free it
 
