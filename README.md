@@ -75,27 +75,10 @@ an hour while it covers more than a hundred variants listed in
 ```
 ./test_kems.sh testable_kem.lst reports/mysystem-kem.txt
 ```
-The script generates running output to `/dev/tty` in addition to the report 
+The script generates running output to standard output in addition to the report 
 file at `reports/mysystem-kem.txt`, so redirecting the output of the script 
-is pointless. 
+is pointless. The output format is self-explanatory.
 
-The output format is fairly simple. The first column always gives a numeric
-timing in seconds. *KEX Total* is simply the sum of time taken by *KEM KeyGen* 
-(Key Generation), *KEM Encaps* (Encapsulation), and *KEM Decaps* 
-(Decapsulation).
-```
-       0.000805357 s   KEX Total   [AKCN-MLWE]
-       0.000324488 s   KEM KeyGen  [AKCN-MLWE]
-       0.000387908 s   KEM Encaps  [AKCN-MLWE]
-       0.000092065 s   KEM Decaps  [AKCN-MLWE]
-       0.000795337 s   KEX Total   [AKCN-MLWE]
-       0.000318946 s   KEM KeyGen  [AKCN-MLWE]
-       0.000382831 s   KEM Encaps  [AKCN-MLWE]
-       0.000091833 s   KEM Decaps  [AKCN-MLWE]
-       0.001336305 s   KEX Total   [AKCN-SEC]
-       0.000421219 s   KEM KeyGen  [AKCN-SEC]
-       [...]
-```
 You are expected to use standard UNIX text tools to extract the information
 you want from report file. To get a sorted list of total KEX times, for 
 example, you can do something like:
@@ -104,18 +87,4 @@ cd reports
 grep "KEX Total" mysystem-kem.txt | sort -n > mysystem-kex.txt
 ```
 This will generate a list of algorithms sorted by Total Key Exchange time.
-The output will look something like like:
-```
-       0.000302187 s   KEX Total   [BabyBearEphem]
-       0.000307943 s   KEX Total   [NewHope512-CPAKEM]
-       0.000454817 s   KEX Total   [BabyBear]
-       0.000515070 s   KEX Total   [NewHope512-CCAKEM]
-       0.000516640 s   KEX Total   [MamaBearEphem]
-[..]
-       8.925089051 s   KEX Total   [BIG_QUAKE_3]
-      14.155901973 s   KEX Total   [Classic McEliece 6960119]
-      16.505762053 s   KEX Total   [BIG_QUAKE]
-      19.538673317 s   KEX Total   [DAGS_3]
-     145.986861373 s   KEX Total   [DAGS_5]
-```
 
